@@ -1,0 +1,33 @@
+# Dependencies
+node_modules/
+
+# Build outputs
+frontend/dist/
+backend/build/
+backend/build-vscode/
+
+# IDE
+.vscode/
+*.swp
+*.swo
+*.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+logs/
+*.log
+
+# Database
+*.sql
+*.db
+
+# Runtime
+*.class
+
+# Environment
+.env
+.env.local
+.env.*.local
