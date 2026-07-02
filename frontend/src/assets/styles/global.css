@@ -1,0 +1,103 @@
+/* Reset */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+}
+
+:root {
+  --primary: #2B6EC1;
+  --primary-light: #3d7fcf;
+  --primary-dark: #1e5ba3;
+  --radius: 8px;
+  --bg-color: #f5f7fa;
+  --text-color: #303133;
+  --text-secondary: #909399;
+  --border-color: #e4e7ed;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Microsoft YaHei", "微软雅黑", sans-serif;
+  color: var(--text-color);
+  background-color: var(--bg-color);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  text-decoration: none;
+  color: var(--primary);
+}
+
+a:hover {
+  color: var(--primary-light);
+}
+
+.page-container {
+  min-height: calc(100vh - 120px);
+  padding: 20px 0;
+}
+
+.main-width {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+/* Button active feedback */
+.el-button:active {
+  transform: scale(0.96);
+}
+
+/* Price color */
+.price-text {
+  color: #f56c6c;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+/* Skeleton loading placeholder */
+.skeleton-placeholder {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e8e8e8 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: skeleton-loading 1.5s ease-in-out infinite;
+  border-radius: var(--radius);
+}
+
+@keyframes skeleton-loading {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* Empty state */
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 20px;
+  color: var(--text-secondary);
+  font-size: 14px;
+}
+
+.empty-state .el-icon {
+  font-size: 60px;
+  margin-bottom: 16px;
+  color: #dcdfe6;
+}
+
+/* Card hover effect */
+.hover-card {
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.hover-card:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+  transform: translateY(-2px);
+}

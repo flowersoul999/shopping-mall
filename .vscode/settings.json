@@ -1,0 +1,11 @@
+{
+    "java.project.sourcePaths": [
+        "backend/src"
+    ],
+    "java.project.referencedLibraries": [
+        "backend/webapp/WEB-INF/lib/*.jar",
+        "C:/Tomcat 9.0/lib/servlet-api.jar",
+        "C:/Tomcat 9.0/lib/tomcat-api.jar"
+    ],
+    "java.project.outputPath": "backend/build-vscode"
+}
