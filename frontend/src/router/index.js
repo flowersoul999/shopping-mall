@@ -69,36 +69,43 @@ const routes = [
     component: () => import('../views/AddressManage.vue'),
     meta: { title: '地址管理', requiresAuth: true }
   },
-  // Admin routes
   {
     path: '/admin',
-    name: 'AdminDashboard',
-    component: () => import('../views/admin/Dashboard.vue'),
-    meta: { title: '管理后台', requiresAuth: true, requiresAdmin: true }
-  },
-  {
-    path: '/admin/products',
-    name: 'AdminProductManage',
-    component: () => import('../views/admin/ProductManage.vue'),
-    meta: { title: '商品管理', requiresAuth: true, requiresAdmin: true }
-  },
-  {
-    path: '/admin/orders',
-    name: 'AdminOrderManage',
-    component: () => import('../views/admin/OrderManage.vue'),
-    meta: { title: '订单管理', requiresAuth: true, requiresAdmin: true }
-  },
-  {
-    path: '/admin/users',
-    name: 'AdminUserManage',
-    component: () => import('../views/admin/UserManage.vue'),
-    meta: { title: '用户管理', requiresAuth: true, requiresAdmin: true }
-  },
-  {
-    path: '/admin/categories',
-    name: 'AdminCategoryManage',
-    component: () => import('../views/admin/CategoryManage.vue'),
-    meta: { title: '分类管理', requiresAuth: true, requiresAdmin: true }
+    name: 'Admin',
+    component: () => import('../views/admin/AdminLayout.vue'),
+    meta: { requiresAuth: true, requiresAdmin: true },
+    children: [
+      {
+        path: '',
+        name: 'AdminDashboard',
+        component: () => import('../views/admin/Dashboard.vue'),
+        meta: { title: '仪表盘' }
+      },
+      {
+        path: 'products',
+        name: 'AdminProductManage',
+        component: () => import('../views/admin/ProductManage.vue'),
+        meta: { title: '商品管理' }
+      },
+      {
+        path: 'orders',
+        name: 'AdminOrderManage',
+        component: () => import('../views/admin/OrderManage.vue'),
+        meta: { title: '订单管理' }
+      },
+      {
+        path: 'users',
+        name: 'AdminUserManage',
+        component: () => import('../views/admin/UserManage.vue'),
+        meta: { title: '用户管理' }
+      },
+      {
+        path: 'categories',
+        name: 'AdminCategoryManage',
+        component: () => import('../views/admin/CategoryManage.vue'),
+        meta: { title: '分类管理' }
+      }
+    ]
   }
 ]
 
@@ -109,27 +116,27 @@ const router = createRouter({
 
 // Navigation guard
 router.beforeEach((to, from, next) => {
-  document.title = to.meta.title ? `${to.meta.title} - 乐购商城` : '乐购商城'
+  document.title = to.meta.title ? `${to.meta.title} - 牢大商城` : '牢大商城'
 
   const userStore = useUserStore()
   const isLoggedIn = userStore.isLoggedIn
   const isAdmin = userStore.isAdmin
 
-  // Check auth required
   if (to.meta.requiresAuth && !isLoggedIn) {
     ElMessage.warning('请先登录')
-    return next({ path: '/login', query: { redirect: to.fullPath } })
+    next({ path: '/login', query: { redirect: to.fullPath } })
+    return
   }
 
-  // Check admin required
   if (to.meta.requiresAdmin && !isAdmin) {
     ElMessage.error('没有管理权限')
-    return next({ path: '/' })
+    next({ path: '/' })
+    return
   }
 
-  // Guest only routes: redirect to home if already logged in
   if (to.meta.guestOnly && isLoggedIn) {
-    return next({ path: '/' })
+    next({ path: '/' })
+    return
   }
 
   next()

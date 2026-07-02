@@ -19,10 +19,15 @@ public class OrderServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         resp.setContentType("application/json;charset=utf-8");
         try { String path = req.getPathInfo(); int uid = getUserId(req);
-            if (uid <= 0) { resp.getWriter().write(JsonUtil.resultToJson(Result.unauthorized())); return; }
             OrderService svc = new OrderService();
             Result result;
-            if ("/list".equals(path)) {
+            if ("/admin/list".equals(path)) {
+                int page = req.getParameter("page") != null ? Integer.parseInt(req.getParameter("page")) : 1;
+                int ps = req.getParameter("pageSize") != null ? Integer.parseInt(req.getParameter("pageSize")) : 10;
+                String status = req.getParameter("status");
+                result = svc.getAdminList(page, ps, status);
+            } else if (uid <= 0) { resp.getWriter().write(JsonUtil.resultToJson(Result.unauthorized())); return; }
+            else if ("/list".equals(path)) {
                 int page = req.getParameter("page") != null ? Integer.parseInt(req.getParameter("page")) : 1;
                 int ps = req.getParameter("pageSize") != null ? Integer.parseInt(req.getParameter("pageSize")) : 10;
                 String status = req.getParameter("status");
@@ -37,7 +42,7 @@ public class OrderServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         resp.setContentType("application/json;charset=utf-8");
         try { int uid = getUserId(req); Map body = JsonUtil.toMap(readBody(req));
-            int addressId = body.get("addressId") != null ? Integer.parseInt(body.get("addressId").toString()) : 0;
+            int addressId = body.get("addressId") != null ? Double.valueOf(body.get("addressId").toString()).intValue() : 0;
             String remark = (String) body.get("remark");
             resp.getWriter().write(JsonUtil.resultToJson(new OrderService().createOrder(uid, addressId, remark)));
         } catch (Exception e) { e.printStackTrace(); resp.getWriter().write(JsonUtil.resultToJson(Result.serverError())); }
@@ -45,7 +50,7 @@ public class OrderServlet extends HttpServlet {
     protected void doPut(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         resp.setContentType("application/json;charset=utf-8");
         try { Map body = JsonUtil.toMap(readBody(req));
-            int id = Integer.parseInt(body.get("id").toString());
+            int id = Double.valueOf(body.get("id").toString()).intValue();
             String status = (String) body.get("status");
             resp.getWriter().write(JsonUtil.resultToJson(new OrderService().updateStatus(id, status)));
         } catch (Exception e) { e.printStackTrace(); resp.getWriter().write(JsonUtil.resultToJson(Result.serverError())); }

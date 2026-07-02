@@ -24,6 +24,14 @@ export function getOrderDetail(id) {
   })
 }
 
+export function getAdminOrderList(params) {
+  return request({
+    url: '/order/admin/list',
+    method: 'get',
+    params
+  })
+}
+
 export function updateOrderStatus(data) {
   return request({
     url: '/order/updateStatus',

@@ -1,4 +1,3 @@
-/* 成员3: 购物车模块 - 购物车接口Servlet */
 package com.shop.cart;
 import com.shop.common.JsonUtil;
 import com.shop.common.Result;
@@ -7,6 +6,7 @@ import javax.servlet.http.*;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.util.Map;
+/* 成员3: 购物车模块 - 购物车接口Servlet */
 @WebServlet("/api/cart/*")
 public class CartServlet extends HttpServlet {
     private int getUserId(HttpServletRequest req) {
@@ -20,23 +20,24 @@ public class CartServlet extends HttpServlet {
         resp.setContentType("application/json;charset=utf-8");
         try { int uid = getUserId(req); if (uid <= 0) { resp.getWriter().write(JsonUtil.resultToJson(Result.unauthorized())); return; }
             resp.getWriter().write(JsonUtil.resultToJson(new CartService().getList(uid)));
-        } catch (Exception e) { resp.getWriter().write(JsonUtil.resultToJson(Result.serverError())); }
+        } catch (Exception e) { e.printStackTrace(); resp.getWriter().write(JsonUtil.resultToJson(Result.serverError())); }
     }
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         resp.setContentType("application/json;charset=utf-8");
-        try { int uid = getUserId(req); Map body = JsonUtil.toMap(readBody(req));
-            int pid = Double.valueOf(body.get("productId").toString()).intValue();
-            int qty = body.get("quantity") != null ? Double.valueOf(body.get("quantity").toString()).intValue() : 1;
+        try { int uid = getUserId(req); if (uid <= 0) { resp.getWriter().write(JsonUtil.resultToJson(Result.unauthorized())); return; }
+            Map body = JsonUtil.toMap(readBody(req));
+            int pid = ((Number) body.get("productId")).intValue();
+            int qty = body.get("quantity") != null ? ((Number) body.get("quantity")).intValue() : 1;
             resp.getWriter().write(JsonUtil.resultToJson(new CartService().add(uid, pid, qty)));
-        } catch (Exception e) { resp.getWriter().write(JsonUtil.resultToJson(Result.serverError())); }
+        } catch (Exception e) { e.printStackTrace(); resp.getWriter().write(JsonUtil.resultToJson(Result.serverError())); }
     }
     protected void doPut(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         resp.setContentType("application/json;charset=utf-8");
         try { Map body = JsonUtil.toMap(readBody(req));
-            int id = Double.valueOf(body.get("id").toString()).intValue();
-            int qty = Double.valueOf(body.get("quantity").toString()).intValue();
+            int id = ((Number) body.get("id")).intValue();
+            int qty = ((Number) body.get("quantity")).intValue();
             resp.getWriter().write(JsonUtil.resultToJson(new CartService().updateQuantity(id, qty)));
-        } catch (Exception e) { resp.getWriter().write(JsonUtil.resultToJson(Result.serverError())); }
+        } catch (Exception e) { e.printStackTrace(); resp.getWriter().write(JsonUtil.resultToJson(Result.serverError())); }
     }
     protected void doDelete(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         resp.setContentType("application/json;charset=utf-8");
@@ -47,6 +48,6 @@ public class CartServlet extends HttpServlet {
                 int id = Integer.parseInt(path.replace("/", ""));
                 resp.getWriter().write(JsonUtil.resultToJson(new CartService().delete(id)));
             }
-        } catch (Exception e) { resp.getWriter().write(JsonUtil.resultToJson(Result.serverError())); }
+        } catch (Exception e) { e.printStackTrace(); resp.getWriter().write(JsonUtil.resultToJson(Result.serverError())); }
     }
 }

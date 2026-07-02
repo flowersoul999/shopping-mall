@@ -1,9 +1,7 @@
 <template>
-  <div class="admin-product page-container">
-    <div class="main-width">
-      <h2 class="page-title">商品管理</h2>
-      <p class="placeholder-text">商品管理页面</p>
-    </div>
+  <div class="main-content">
+    <h2 class="page-title">商品管理</h2>
+    <p class="placeholder-text">商品管理页面</p>
   </div>
 </template>
 

@@ -44,7 +44,7 @@
                   已售 {{ product.sales }} 件
                 </span>
                 <span class="meta-item">
-                  <el-icon><Package /></el-icon>
+                  <el-icon><Box /></el-icon>
                   库存 {{ product.stock }} 件
                 </span>
                 <span class="meta-item">
@@ -83,7 +83,7 @@
 <script setup>
 import { ref, onMounted } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
-import { Picture, ShoppingCart, Package, Grid, Ticket } from '@element-plus/icons-vue'
+import { Picture, ShoppingCart, Box, Grid, Ticket } from '@element-plus/icons-vue'
 import { getProductDetail } from '../api/product'
 import { useCartStore } from '../store/cart'
 import { useUserStore } from '../store/user'

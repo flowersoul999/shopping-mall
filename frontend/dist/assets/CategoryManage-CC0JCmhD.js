@@ -1,0 +1,1 @@
+import{_ as t,c as s,a as e,k as c}from"./index-BHKSNx3o.js";const o={},n={class:"admin-category page-container"};function r(d,a){return c(),s("div",n,[...a[0]||(a[0]=[e("div",{class:"main-width"},[e("h2",{class:"page-title"},"分类管理"),e("p",{class:"placeholder-text"},"分类管理页面")],-1)])])}const l=t(o,[["render",r],["__scopeId","data-v-0069b144"]]);export{l as default};

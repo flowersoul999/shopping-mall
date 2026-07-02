@@ -1,0 +1,1 @@
+import{_ as t,c as a,a as s,k as c}from"./index-DQX6Atz3.js";const o={},n={class:"main-content"};function r(d,e){return c(),a("div",n,[...e[0]||(e[0]=[s("h2",{class:"page-title"},"用户管理",-1),s("p",{class:"placeholder-text"},"用户管理页面",-1)])])}const l=t(o,[["render",r],["__scopeId","data-v-694855dd"]]);export{l as default};

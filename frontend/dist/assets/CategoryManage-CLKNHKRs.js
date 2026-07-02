@@ -1,0 +1,1 @@
+import{_ as a,c as s,a as t,k as c}from"./index-8j1uML4r.js";const o={},n={class:"main-content"};function r(_,e){return c(),s("div",n,[...e[0]||(e[0]=[t("h2",{class:"page-title"},"分类管理",-1),t("p",{class:"placeholder-text"},"分类管理页面",-1)])])}const d=a(o,[["render",r],["__scopeId","data-v-cc7be058"]]);export{d as default};

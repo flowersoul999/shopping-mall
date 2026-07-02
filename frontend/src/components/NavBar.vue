@@ -3,7 +3,7 @@
     <div class="main-width navbar-inner">
       <!-- Logo -->
       <router-link to="/" class="logo">
-        <span class="logo-text">乐购商城</span>
+        <span class="logo-text">牢大商城</span>
       </router-link>
 
       <!-- Search -->
@@ -27,7 +27,7 @@
             <span>购物车</span>
           </router-link>
           <router-link to="/orders" class="nav-link">我的订单</router-link>
-          <router-link to="/profile" class="nav-link">{{ userStore.userInfo?.username || '个人中心' }}</router-link>
+          <router-link to="/profile" class="nav-link">个人中心</router-link>
           <router-link v-if="userStore.isAdmin" to="/admin" class="nav-link admin-link">后台管理</router-link>
           <a class="nav-link logout-link" @click.prevent="handleLogout">退出</a>
         </template>
@@ -97,7 +97,8 @@ function handleLogout() {
 
 .search-bar {
   flex: 1;
-  max-width: 480px;
+  max-width: 360px;
+  min-width: 200px;
 }
 
 .search-bar .el-input {
@@ -107,8 +108,9 @@ function handleLogout() {
 .nav-links {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 16px;
   flex-shrink: 0;
+  order: 3;
 }
 
 .nav-link {

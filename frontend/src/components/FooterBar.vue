@@ -1,7 +1,7 @@
 <template>
   <div class="footer-bar">
     <div class="main-width footer-content">
-      <p>&copy; 2026 乐购商城 - JavaWeb课程实训项目</p>
+      <p>&copy; 牢大商城 - JavaWeb课程实训项目</p>
     </div>
   </div>
 </template>

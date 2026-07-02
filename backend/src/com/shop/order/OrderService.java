@@ -62,13 +62,27 @@ public class OrderService {
         Connection conn = DBUtil.getConnection();
         OrderDAO dao = new OrderDAO(conn);
         List<Order> list = dao.findByUserId(userId, page, pageSize, status);
-        // 为每个订单加载订单项
         for (Order o : list) {
             o.setItems(dao.findItemsByOrderId(o.getId()));
         }
         conn.close();
         Map<String, Object> data = new HashMap<>();
         data.put("list", list); data.put("page", page); data.put("pageSize", pageSize);
+        return Result.success(data);
+    }
+    public Result getAdminList(int page, int pageSize, String status) throws Exception {
+        Connection conn = DBUtil.getConnection();
+        OrderDAO dao = new OrderDAO(conn);
+        List<Order> list = dao.findAll(page, pageSize, status);
+        for (Order o : list) {
+            o.setItems(dao.findItemsByOrderId(o.getId()));
+        }
+        int total = dao.count();
+        double totalSales = dao.sumTotalPrice();
+        conn.close();
+        Map<String, Object> data = new HashMap<>();
+        data.put("list", list); data.put("page", page); data.put("pageSize", pageSize);
+        data.put("total", total); data.put("totalSales", totalSales);
         return Result.success(data);
     }
     public Result getDetail(int id) throws Exception {

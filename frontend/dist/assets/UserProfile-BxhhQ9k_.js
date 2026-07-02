@@ -1,0 +1,1 @@
+import{_ as a,c as t,a as e,k as c}from"./index-C61tAHdU.js";const o={},r={class:"user-profile page-container"};function n(l,s){return c(),t("div",r,[...s[0]||(s[0]=[e("div",{class:"main-width"},[e("h2",{class:"page-title"},"个人中心"),e("p",{class:"placeholder-text"},"个人中心页面")],-1)])])}const i=a(o,[["render",n],["__scopeId","data-v-f43cd7bb"]]);export{i as default};

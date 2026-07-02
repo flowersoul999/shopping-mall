@@ -36,7 +36,7 @@ public class AddressServlet extends HttpServlet {
     protected void doPut(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         resp.setContentType("application/json;charset=utf-8");
         try { Map body = JsonUtil.toMap(readBody(req));
-            int id = Integer.parseInt(body.get("id").toString());
+            int id = Double.valueOf(body.get("id").toString()).intValue();
             int uid = getUserId(req);
             Address a = new Address(); a.setId(id); a.setUserId(uid);
             a.setName((String)body.get("name")); a.setPhone((String)body.get("phone"));

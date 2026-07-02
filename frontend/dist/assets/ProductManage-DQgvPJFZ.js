@@ -1,0 +1,1 @@
+import{_ as t,c as s,a as e,k as c}from"./index-Bs9bUOc6.js";const o={},n={class:"admin-product page-container"};function r(d,a){return c(),s("div",n,[...a[0]||(a[0]=[e("div",{class:"main-width"},[e("h2",{class:"page-title"},"商品管理"),e("p",{class:"placeholder-text"},"商品管理页面")],-1)])])}const l=t(o,[["render",r],["__scopeId","data-v-47ba1d1e"]]);export{l as default};

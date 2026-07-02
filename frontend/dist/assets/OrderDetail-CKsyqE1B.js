@@ -1,0 +1,1 @@
+import{_ as t,c as s,a as e,k as c}from"./index-C61tAHdU.js";const r={},o={class:"order-detail page-container"};function d(n,a){return c(),s("div",o,[...a[0]||(a[0]=[e("div",{class:"main-width"},[e("h2",{class:"page-title"},"订单详情"),e("p",{class:"placeholder-text"},"订单详情页面")],-1)])])}const i=t(r,[["render",d],["__scopeId","data-v-8ada063a"]]);export{i as default};

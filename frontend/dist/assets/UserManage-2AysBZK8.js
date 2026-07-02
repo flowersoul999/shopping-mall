@@ -1,0 +1,1 @@
+import{_ as s,c as t,a as e,k as c}from"./index-YUEcW-VR.js";const n={},o={class:"admin-user page-container"};function r(d,a){return c(),t("div",o,[...a[0]||(a[0]=[e("div",{class:"main-width"},[e("h2",{class:"page-title"},"用户管理"),e("p",{class:"placeholder-text"},"用户管理页面")],-1)])])}const l=s(n,[["render",r],["__scopeId","data-v-ef534456"]]);export{l as default};

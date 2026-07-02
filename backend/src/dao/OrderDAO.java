@@ -65,9 +65,12 @@ public class OrderDAO {
         ps.setString(1, status); ps.setInt(2, id);
         ps.executeUpdate(); ps.close();
     }
-    public List<Order> findAll(int page, int size) throws SQLException {
+    public List<Order> findAll(int page, int size, String status) throws SQLException {
         List<Order> list = new ArrayList<>();
-        PreparedStatement ps = conn.prepareStatement("SELECT * FROM orders ORDER BY create_time DESC LIMIT ?,?");
+        String sql = "SELECT * FROM orders";
+        if (status != null && !status.isEmpty() && !"all".equals(status)) { sql += " WHERE status='"+status+"'"; }
+        sql += " ORDER BY create_time DESC LIMIT ?,?";
+        PreparedStatement ps = conn.prepareStatement(sql);
         ps.setInt(1, (page-1)*size); ps.setInt(2, size);
         ResultSet rs = ps.executeQuery();
         while (rs.next()) list.add(mapOrder(rs));

@@ -1,0 +1,1 @@
+import{Q as t}from"./index-BcI7TQrG.js";function u(r){return t({url:"/order/create",method:"post",data:r})}function a(r){return t({url:"/order/list",method:"get",params:r})}function o(r){return t({url:"/order/detail",method:"get",params:{id:r}})}function d(r){return t({url:"/order/updateStatus",method:"put",data:r})}export{o as a,u as c,a as g,d as u};

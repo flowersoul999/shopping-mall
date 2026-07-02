@@ -1,0 +1,1 @@
+import{_ as s,c as t,a,k as c}from"./index-CWOjfBSZ.js";const o={},d={class:"admin-dashboard page-container"};function r(n,e){return c(),t("div",d,[...e[0]||(e[0]=[a("div",{class:"main-width"},[a("h2",{class:"page-title"},"管理后台"),a("p",{class:"placeholder-text"},"仪表盘页面")],-1)])])}const l=s(o,[["render",r],["__scopeId","data-v-67d80069"]]);export{l as default};

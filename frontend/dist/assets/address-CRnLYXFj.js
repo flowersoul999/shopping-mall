@@ -1,0 +1,1 @@
+import{a6 as d}from"./index-DQX6Atz3.js";function s(){return d({url:"/address",method:"get"})}function t(e){return d({url:"/address",method:"post",data:e})}function u(e){return d({url:"/address",method:"put",data:e})}function a(e){return d({url:"/address",method:"delete",params:{id:e}})}export{t as a,a as d,s as g,u};

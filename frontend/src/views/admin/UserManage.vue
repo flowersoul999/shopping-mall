@@ -1,9 +1,7 @@
 <template>
-  <div class="admin-user page-container">
-    <div class="main-width">
-      <h2 class="page-title">用户管理</h2>
-      <p class="placeholder-text">用户管理页面</p>
-    </div>
+  <div class="main-content">
+    <h2 class="page-title">用户管理</h2>
+    <p class="placeholder-text">用户管理页面</p>
   </div>
 </template>
 

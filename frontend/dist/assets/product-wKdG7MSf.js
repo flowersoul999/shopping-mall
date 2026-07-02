@@ -1,0 +1,1 @@
+import{Q as r}from"./index-Bs9bUOc6.js";function u(t){return r({url:"/product/list",method:"get",params:t})}function a(t,e){return r({url:"/product/search",method:"get",params:{keyword:t,...e}})}function s(t){return r({url:"/product/detail",method:"get",params:{id:t}})}function c(){return r({url:"/category/list",method:"get"})}export{u as a,s as b,c as g,a as s};
