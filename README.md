@@ -1,4 +1,4 @@
-﻿# 牢大商城
+# 牢大商城
 
 一个基于 Vue 3 + Java Servlet 的在线商城项目，包含完整的商品浏览、购物车、订单管理和后台管理功能。
 
@@ -8,48 +8,50 @@
 
 ### 首页
 
-![首页截图](frontend/public/static/images/轮播图1.png)
+![首页截图](frontend/public/static/images/首页.png)
+
+<br />
 
 ### 商品列表
 
-![首页截图](frontend/public/static/images/轮播图1.png)
+![商品列表截图](frontend/public/static/images/商品列表.png)
 
 ### 商品分类
 
-![首页截图](frontend/public/static/images/轮播图1.png)
+![商品分类截图](frontend/public/static/images/商品分类.png)
 
 ### 购物车
 
-![首页截图](frontend/public/static/images/轮播图1.png)
+![购物车截图](frontend/public/static/images/购物车.png)
 
-###  订单确认
+### 订单确认
 
-![首页截图](frontend/public/static/images/轮播图1.png)
+![订单确认截图](frontend/public/static/images/订单确认.png)
 
-### 还有登录界面及管理员界面就不再一一展示
+### 还有登录界面及管理员界面等待就不再一一展示
 
 # 🛠 技术栈
 
 ### 前端
 
-- **Vue 3** - 渐进式 JavaScript 框架
-- **Element Plus** - Vue 3 组件库
-- **Vue Router** - Vue 路由管理器
-- **Pinia** - Vue 状态管理
-- **Axios** - HTTP 客户端
-- **Vite** - 前端构建工具
+- Vue 3 - 渐进式 JavaScript 框架
+- Element Plus - Vue 3 组件库
+- Vue Router - Vue 路由管理器
+- Pinia - Vue 状态管理
+- Axios - HTTP 客户端
+- Vite - 前端构建工具
 
 ### 后端
 
-- **Java Servlet** - Java Web 服务器端技术
-- **MySQL** - 关系型数据库
-- **Gson** - JSON 序列化/反序列化
+- Java Servlet - Java Web 服务器端技术
+- MySQL - 关系型数据库
+- Gson - JSON 序列化/反序列化
 
 ### 开发环境
 
-- **Windows** - 操作系统
-- **Tomcat 9** - Web 服务器
-- **VS Code** - 代码编辑器
+- Windows - 操作系统
+- Tomcat 9 - Web 服务器
+- VS Code - 代码编辑器
 
 ## 📁 项目结构
 
@@ -59,11 +61,32 @@
 │   ├── src/
 │   │   ├── api/             # API 请求封装
 │   │   ├── components/      # 公共组件
+│   │   │   ├── NavBar.vue   # 导航栏
+│   │   │   ├── ProductCard.vue # 商品卡片
+│   │   │   └── ...
 │   │   ├── router/          # 路由配置
 │   │   ├── store/           # Pinia 状态管理
+│   │   │   ├── user.js      # 用户状态
+│   │   │   └── cart.js      # 购物车状态
 │   │   ├── views/           # 页面组件
 │   │   │   ├── admin/       # 管理后台页面
-│   │   │   └── *.vue        # 用户端页面
+│   │   │   │   ├── AdminLayout.vue    # 后台布局
+│   │   │   │   ├── Dashboard.vue      # 仪表盘
+│   │   │   │   ├── OrderManage.vue    # 订单管理
+│   │   │   │   ├── ProductManage.vue  # 商品管理
+│   │   │   │   ├── CategoryManage.vue # 分类管理
+│   │   │   │   └── UserManage.vue     # 用户管理
+│   │   │   ├── Home.vue          # 首页
+│   │   │   ├── Login.vue         # 登录页
+│   │   │   ├── Register.vue      # 注册页
+│   │   │   ├── ProductList.vue   # 商品列表
+│   │   │   ├── ProductDetail.vue # 商品详情
+│   │   │   ├── Cart.vue          # 购物车
+│   │   │   ├── AddressManage.vue # 地址管理
+│   │   │   ├── Checkout.vue      # 结算页面
+│   │   │   ├── OrderList.vue     # 订单列表
+│   │   │   ├── OrderDetail.vue   # 订单详情
+│   │   │   └── UserProfile.vue   # 个人中心
 │   │   ├── App.vue          # 根组件
 │   │   └── main.js          # 入口文件
 │   ├── index.html           # HTML 模板
@@ -95,30 +118,34 @@
 ### 用户端
 
 - ✅ 用户注册与登录
+- ✅ 首页轮播图展示
 - ✅ 商品浏览与搜索
 - ✅ 商品分类筛选
+- ✅ 商品详情查看
 - ✅ 购物车管理（添加、删除、数量修改）
 - ✅ 收货地址管理（添加、编辑、删除、默认地址）
 - ✅ 订单结算与提交
 - ✅ 订单列表与详情查看
-- ✅ 个人中心（信息管理、密码修改）
+- ✅ 个人中心（信息管理、订单统计）
+- ✅ 路由守卫（未登录拦截）
 
 ### 管理后台
 
+- ✅ 后台布局框架
 - ✅ 仪表盘（数据统计）
-- ✅ 商品管理（占位）
-- ✅ 订单管理（查看、发货、完成、取消）
-- ✅ 用户管理（占位）
-- ✅ 分类管理（占位）
+- ✅ 订单管理（查看订单列表、发货、完成、取消订单）
+- ✅ 商品管理页面框架
+- ✅ 用户管理页面框架
+- ✅ 分类管理页面框架
 
 ## 🚀 快速开始
 
 ### 环境要求
 
-- **Node.js** >= 18.0.0
-- **Java** >= 1.8
-- **MySQL** >= 5.7
-- **Tomcat** >= 9.0
+- Node.js >= 18.0.0
+- Java >= 1.8
+- MySQL >= 5.7
+- Tomcat >= 9.0
 
 ### 1. 数据库配置
 
@@ -150,7 +177,7 @@ npm run dev
 
 ### 3. 后端部署
 
-**方式一：手动部署到 Tomcat**
+方式一：手动部署到 Tomcat
 
 1. 编译后端代码：
 
@@ -159,10 +186,10 @@ cd backend
 javac -d build-vscode -cp "src;webapp/WEB-INF/lib/*" src/com/shop/**/*.java src/dao/*.java
 ```
 
-1. 将编译后的 `build-vscode` 目录复制到 Tomcat 的 `webapps/shopping-mall/WEB-INF/classes/`
-2. 启动 Tomcat 服务
+2. 将编译后的 `build-vscode` 目录复制到 Tomcat 的 `webapps/shopping-mall/WEB-INF/classes/`
+3. 启动 Tomcat 服务
 
-**方式二：使用项目脚本**
+方式二：使用项目脚本
 
 ```bash
 # 启动服务
@@ -194,6 +221,13 @@ javac -d build-vscode -cp "src;webapp/WEB-INF/lib/*" src/com/shop/**/*.java src/
 | `/api/product/detail` | GET | 获取商品详情 |
 | `/api/product/search` | GET | 搜索商品   |
 
+### 分类模块
+
+| 接口                      | 方法  | 说明     |
+| ----------------------- | --- | ------ |
+| `/api/category/list`    | GET | 获取分类列表 |
+| `/api/category/detail`  | GET | 获取分类详情 |
+
 ### 购物车模块
 
 | 接口                 | 方法   | 说明       |
@@ -214,6 +248,7 @@ javac -d build-vscode -cp "src;webapp/WEB-INF/lib/*" src/com/shop/**/*.java src/
 | `/api/order/pay`        | POST | 支付订单    |
 | `/api/order/confirm`    | POST | 确认收货    |
 | `/api/order/admin/list` | GET  | 管理员订单列表 |
+| `/api/order/admin/update`| POST | 更新订单状态  |
 
 ### 地址模块
 
@@ -223,6 +258,12 @@ javac -d build-vscode -cp "src;webapp/WEB-INF/lib/*" src/com/shop/**/*.java src/
 | `/api/address/add`    | POST | 添加地址   |
 | `/api/address/update` | POST | 更新地址   |
 | `/api/address/delete` | POST | 删除地址   |
+
+### 管理模块
+
+| 接口                    | 方法  | 说明     |
+| --------------------- | --- | ------ |
+| `/api/admin/dashboard`| GET | 获取仪表盘数据 |
 
 ## 🔐 测试账号
 
@@ -267,4 +308,3 @@ MIT License
 ## 📧 联系
 
 如有问题或建议，请提交 Issue。
-
