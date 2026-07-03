@@ -124,13 +124,13 @@ CREATE TABLE `order_item` (
 INSERT INTO `user` (`username`, `password`, `nickname`, `role`, `status`) VALUES
 ('admin', 'e10adc3949ba59abbe56e057f20f883e', '管理员', 'admin', 1);
 
--- 演示用户 (test / 123456)
+-- 演示用户 (test / 123456)/*  */
 INSERT INTO `user` (`username`, `password`, `nickname`, `role`, `status`) VALUES
 ('test', 'e10adc3949ba59abbe56e057f20f883e', '测试用户', 'user', 1);
 
 -- 示例演示地址
 INSERT INTO `address` (`user_id`, `name`, `phone`, `province`, `city`, `district`, `detail`, `is_default`) VALUES
-(2, '张三', '13800138000', '广东省', '深圳市', '南山区', '科技园南区A栋1001室', 1);
+(2, '张三', '13800138000', '湖北省', '十堰市', '张湾区', '湖北汽车工业学院', 1);
 
 -- 商品分类
 INSERT INTO `category` (`id`, `name`, `description`, `sort_order`) VALUES
@@ -141,15 +141,15 @@ INSERT INTO `category` (`id`, `name`, `description`, `sort_order`) VALUES
 
 -- 示例商品
 INSERT INTO `product` (`category_id`, `name`, `description`, `price`, `stock`, `image`, `status`, `sales`) VALUES
-(1, '智能手机 Pro Max', '旗舰级智能手机，高性能处理器，高清摄像头', 6999.00, 100, '/static/images/product-1.svg', 1, 256),
-(1, '轻薄笔记本电脑', '14英寸高清屏，16GB内存，512GB固态硬盘', 4999.00, 50, '/static/images/product-2.svg', 1, 128),
-(1, '无线蓝牙耳机', '主动降噪，超长续航，舒适佩戴', 699.00, 200, '/static/images/product-3.svg', 1, 512),
-(2, '纯棉休闲T恤', '100%纯棉面料，舒适透气，简约百搭', 99.00, 300, '/static/images/product-4.svg', 1, 1024),
-(2, '经典牛仔裤', '修身版型，弹力面料，经典百搭', 259.00, 150, '/static/images/product-5.svg', 1, 678),
-(2, '轻奢风衣外套', '时尚立领设计，防风防水面料', 899.00, 80, '/static/images/product-6.svg', 1, 345),
-(3, '进口坚果礼盒', '精选优质坚果，健康美味', 168.00, 500, '/static/images/product-7.svg', 1, 889),
-(3, '有机绿茶礼盒', '高山有机茶叶，清香甘醇', 128.00, 400, '/static/images/product-8.svg', 1, 567),
-(3, '手工巧克力礼盒', '进口可可豆制作，丝滑口感', 198.00, 300, '/static/images/product-9.svg', 1, 723),
-(4, '简约台灯', 'LED护眼，三档调光，柔和光线', 89.00, 250, '/static/images/product-10.svg', 1, 456),
-(4, '真空保温杯', '316不锈钢内胆，保温12小时', 69.00, 350, '/static/images/product-11.svg', 1, 1567),
-(4, '记忆棉枕头', '慢回弹记忆棉，人体工学设计', 159.00, 180, '/static/images/product-12.svg', 1, 834);
+(1, '智能手机 Pro Max', '旗舰级智能手机，高性能处理器，高清摄像头', 6999.00, 100, '/static/images/product-1.jpg', 1, 256),
+(1, '轻薄笔记本电脑', '14英寸高清屏，16GB内存，512GB固态硬盘', 4999.00, 50, '/static/images/product-2.jpg', 1, 128),
+(1, '无线蓝牙耳机', '主动降噪，超长续航，舒适佩戴', 699.00, 200, '/static/images/product-3.jpg', 1, 512),
+(2, '纯棉休闲T恤', '100%纯棉面料，舒适透气，简约百搭', 99.00, 300, '/static/images/product-4.jpg', 1, 1024),
+(2, '经典牛仔裤', '修身版型，弹力面料，经典百搭', 259.00, 150, '/static/images/product-5.jpg', 1, 678),
+(2, '轻奢风衣外套', '时尚立领设计，防风防水面料', 899.00, 80, '/static/images/product-6.jpg', 1, 345),
+(3, '进口坚果礼盒', '精选优质坚果，健康美味', 168.00, 500, '/static/images/product-7.jpg', 1, 889),
+(3, '有机绿茶礼盒', '高山有机茶叶，清香甘醇', 128.00, 400, '/static/images/product-8.jpg', 1, 567),
+(3, '手工巧克力礼盒', '进口可可豆制作，丝滑口感', 198.00, 300, '/static/images/product-9.jpg', 1, 723),
+(4, '简约台灯', 'LED护眼，三档调光，柔和光线', 89.00, 250, '/static/images/product-10.jpg', 1, 456),
+(4, '真空保温杯', '316不锈钢内胆，保温12小时', 69.00, 350, '/static/images/product-11.jpg', 1, 1567),
+(4, '记忆棉枕头', '慢回弹记忆棉，人体工学设计', 159.00, 180, '/static/images/product-12.jpg', 1, 834);

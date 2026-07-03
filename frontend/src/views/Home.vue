@@ -3,7 +3,12 @@
     <div class="main-width banner-section">
       <el-carousel height="380px" indicator-position="outside" :interval="4000">
         <el-carousel-item v-for="(banner, idx) in banners" :key="idx">
-          <div class="banner-slide" :style="{ background: banner.bg }">
+          <div class="banner-slide">
+            <el-image :src="banner.image" fit="cover" style="width:100%;height:100%">
+              <template #error>
+                <div class="banner-slide-fallback" :style="{ background: banner.bg }"></div>
+              </template>
+            </el-image>
             <div class="banner-content">
               <h2 class="banner-title">{{ banner.title }}</h2>
               <p class="banner-desc">{{ banner.desc }}</p>
@@ -67,9 +72,9 @@ const error = ref('')
 const catColors = ['#ff6b6b','#4ecdc4','#45b7d1','#96ceb4','#ffeaa7','#dda0dd','#98d8c8','#f7dc6f','#bb8fce','#85c1e9','#f0b27a','#82e0aa']
 const catIcons = [Monitor, ShoppingBag, Watch, Headset, Camera, Reading, Present, Cellphone, Monitor, ShoppingBag, Watch, Headset]
 const banners = [
-  { title:'618年中大促',desc:'全场低至5折，限时抢购',bg:'linear-gradient(135deg,#2b6ec1,#4a90d9)' },
-  { title:'新品首发',desc:'最新潮流单品，抢先体验',bg:'linear-gradient(135deg,#e4393c,#ff6b6b)' },
-  { title:'品质生活',desc:'精选好物，提升生活品质',bg:'linear-gradient(135deg,#2ecc71,#27ae60)' }
+  { title:'商城大促',desc:'不要998，不要888',bg:'linear-gradient(135deg,#2b6ec1,#4a90d9)',image:'/static/images/轮播图1.png' },
+  { title:'新品首发',desc:'想要啥有啥',bg:'linear-gradient(135deg,#e4393c,#ff6b6b)',image:'/static/images/轮播图2.png' },
+  { title:'品质生活',desc:'牢大只卖正品',bg:'linear-gradient(135deg,#2ecc71,#27ae60)',image:'/static/images/轮播图3.png' }
 ]
 async function fetchCategories() {
   try {
@@ -104,8 +109,10 @@ onMounted(() => { fetchCategories(); fetchProducts() })
 <style scoped>
 .home { min-height:100vh }
 .banner-section { padding-top:20px }
-.banner-slide { height:100%;display:flex;align-items:center;padding:0 60px }
-.banner-content { color:#fff }
+.banner-slide { height:100%;display:flex;align-items:center;padding:0 60px;position:relative;overflow:hidden }
+.banner-slide .el-image { position:absolute;top:0;left:0;width:100%;height:100% }
+.banner-slide-fallback { position:absolute;top:0;left:0;width:100%;height:100% }
+.banner-content { color:#000;position:relative;z-index:1 }
 .banner-title { font-size:36px;font-weight:700;margin-bottom:12px }
 .banner-desc { font-size:16px;margin-bottom:20px;opacity:.9 }
 .section-title { font-size:22px;font-weight:700;color:#333;margin:32px 0 20px;padding-left:12px;border-left:4px solid #2b6ec1 }

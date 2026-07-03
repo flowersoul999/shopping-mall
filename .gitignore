@@ -21,7 +21,6 @@ logs/
 *.log
 
 # Database
-*.sql
 *.db
 
 # Runtime
