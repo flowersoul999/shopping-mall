@@ -2,6 +2,14 @@
 
 一个基于 Vue 3 + Java Servlet 的在线商城项目，包含完整的商品浏览、购物车、订单管理和后台管理功能。
 
+## 📷 项目截图
+
+### 首页
+![首页](frontend/public/static/images/轮播图1.png)
+
+### 商品列表
+![商品列表](frontend/public/static/images/product-1.jpg)
+
 ## 🛠 技术栈
 
 ### 前端
