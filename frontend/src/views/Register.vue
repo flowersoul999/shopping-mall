@@ -1,7 +1,10 @@
 <template>
+  <!-- 注册页面组件 -->
   <div class="register page-container">
+    <!-- 注册卡片 -->
     <div class="auth-card">
       <h2>注册</h2>
+      <!-- 注册表单 -->
       <el-form
         ref="formRef"
         :model="form"
@@ -10,6 +13,7 @@
         size="large"
         @submit.prevent="handleRegister"
       >
+        <!-- 用户名输入框 -->
         <el-form-item prop="username">
           <el-input
             v-model="form.username"
@@ -17,6 +21,7 @@
             :prefix-icon="User"
           />
         </el-form-item>
+        <!-- 密码输入框 -->
         <el-form-item prop="password">
           <el-input
             v-model="form.password"
@@ -26,6 +31,7 @@
             show-password
           />
         </el-form-item>
+        <!-- 确认密码输入框 -->
         <el-form-item prop="confirmPassword">
           <el-input
             v-model="form.confirmPassword"
@@ -35,6 +41,7 @@
             show-password
           />
         </el-form-item>
+        <!-- 注册按钮 -->
         <el-form-item>
           <el-button
             type="primary"
@@ -46,6 +53,7 @@
           </el-button>
         </el-form-item>
       </el-form>
+      <!-- 登录链接 -->
       <div class="auth-link">
         已有账号？
         <router-link to="/login">立即登录</router-link>
@@ -55,20 +63,36 @@
 </template>
 
 <script setup>
-import { ref, reactive } from 'vue'
-import { User, Lock } from '@element-plus/icons-vue'
-import { useUserStore } from '../store/user'
+/**
+ * Register注册页面组件
+ * 提供用户注册功能，包含用户名、密码和确认密码输入框，以及表单验证
+ */
+import { ref, reactive } from 'vue'                       // 引入Vue响应式API
+import { User, Lock } from '@element-plus/icons-vue'      // 引入Element Plus图标
+import { useUserStore } from '../store/user'              // 引入用户状态管理
 
+// 获取用户store实例
 const userStore = useUserStore()
+// 表单引用
 const formRef = ref(null)
+// 加载状态
 const loading = ref(false)
 
+/**
+ * 表单数据对象
+ */
 const form = reactive({
-  username: '',
-  password: '',
-  confirmPassword: ''
+  username: '',                                            // 用户名
+  password: '',                                             // 密码
+  confirmPassword: ''                                       // 确认密码
 })
 
+/**
+ * 自定义验证函数：验证确认密码是否与密码一致
+ * @param {Object} rule - 验证规则
+ * @param {string} value - 确认密码值
+ * @param {Function} callback - 回调函数
+ */
 const validateConfirm = (rule, value, callback) => {
   if (value !== form.password) {
     callback(new Error('两次输入的密码不一致'))
@@ -77,6 +101,9 @@ const validateConfirm = (rule, value, callback) => {
   }
 }
 
+/**
+ * 表单验证规则
+ */
 const rules = {
   username: [
     { required: true, message: '请输入用户名', trigger: 'blur' },
@@ -92,51 +119,77 @@ const rules = {
   ]
 }
 
+/**
+ * 处理注册表单提交
+ * 先验证表单，验证通过后调用用户store的register方法
+ */
 async function handleRegister() {
+  // 验证表单，失败时返回false
   const valid = await formRef.value.validate().catch(() => false)
   if (!valid) return
+  // 设置加载状态
   loading.value = true
+  // 调用用户store的register方法
   await userStore.register({
     username: form.username,
     password: form.password
   })
+  // 恢复加载状态
   loading.value = false
 }
 </script>
 
 <style scoped>
+/**
+ * 注册页面主样式
+ */
 .register {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  display: flex;                                            /* flex布局 */
+  justify-content: center;                                  /* 水平居中 */
+  align-items: center;                                      /* 垂直居中 */
 }
 
+/**
+ * 注册卡片样式
+ */
 .auth-card {
-  width: 400px;
-  padding: 32px;
-  background: #fff;
-  border-radius: var(--radius);
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+  width: 400px;                                            /* 固定宽度 */
+  padding: 32px;                                           /* 内边距 */
+  background: #fff;                                         /* 白色背景 */
+  border-radius: var(--radius);                             /* 圆角 */
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);               /* 阴影效果 */
 }
 
+/**
+ * 卡片标题样式
+ */
 .auth-card h2 {
-  text-align: center;
-  font-size: 22px;
-  color: var(--text-color);
-  margin-bottom: 24px;
+  text-align: center;                                       /* 居中对齐 */
+  font-size: 22px;                                          /* 字号22px */
+  color: var(--text-color);                                 /* 文字颜色 */
+  margin-bottom: 24px;                                      /* 下外边距 */
 }
 
+/**
+ * 提交按钮样式
+ */
 .submit-btn {
-  width: 100%;
+  width: 100%;                                              /* 宽度100% */
 }
 
+/**
+ * 登录链接样式
+ */
 .auth-link {
-  text-align: center;
-  font-size: 13px;
-  color: var(--text-secondary);
+  text-align: center;                                       /* 居中对齐 */
+  font-size: 13px;                                          /* 字号13px */
+  color: var(--text-secondary);                             /* 次要文字颜色 */
 }
 
+/**
+ * 链接颜色
+ */
 .auth-link a {
-  color: var(--primary);
+  color: var(--primary);                                    /* 主题色 */
 }
 </style>
