@@ -1,103 +1,162 @@
-/* Reset */
+/**
+ * 全局样式文件
+ * 定义项目通用的CSS变量、重置样式和基础组件样式
+ */
+
+/**
+ * Reset重置样式
+ * 清除浏览器默认样式，统一盒模型
+ */
 *,
 *::before,
 *::after {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+  margin: 0;                                                 /* 清除外边距 */
+  padding: 0;                                                /* 清除内边距 */
+  box-sizing: border-box;                                     /* 盒模型：宽高包含内边距和边框 */
 }
 
+/**
+ * HTML和Body基础样式
+ */
 html, body {
-  height: 100%;
+  height: 100%;                                              /* 高度100% */
 }
 
+/**
+ * CSS变量定义
+ * 统一管理主题颜色、间距和基础样式
+ */
 :root {
-  --primary: #2B6EC1;
-  --primary-light: #3d7fcf;
-  --primary-dark: #1e5ba3;
-  --radius: 8px;
-  --bg-color: #f5f7fa;
-  --text-color: #303133;
-  --text-secondary: #909399;
-  --border-color: #e4e7ed;
+  --primary: #2B6EC1;                                        /* 主色调（蓝色） */
+  --primary-light: #3d7fcf;                                  /* 主色调浅色 */
+  --primary-dark: #1e5ba3;                                   /* 主色调深色 */
+  --radius: 8px;                                             /* 圆角大小 */
+  --bg-color: #f5f7fa;                                       /* 背景颜色（浅灰色） */
+  --text-color: #303133;                                     /* 主文字颜色（深灰色） */
+  --text-secondary: #909399;                                 /* 次要文字颜色（中灰色） */
+  --border-color: #e4e7ed;                                    /* 边框颜色（浅灰色） */
 }
 
+/**
+ * Body全局样式
+ * 字体、颜色、背景和抗锯齿设置
+ */
 body {
-  font-family: -apple-system, BlinkMacSystemFont, "Microsoft YaHei", "微软雅黑", sans-serif;
-  color: var(--text-color);
-  background-color: var(--bg-color);
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  font-family: -apple-system, BlinkMacSystemFont, "Microsoft YaHei", "微软雅黑", sans-serif; /* 字体栈 */
+  color: var(--text-color);                                   /* 文字颜色 */
+  background-color: var(--bg-color);                          /* 背景颜色 */
+  -webkit-font-smoothing: antialiased;                        /* Chrome/Safari抗锯齿 */
+  -moz-osx-font-smoothing: grayscale;                         /* Firefox抗锯齿 */
 }
 
+/**
+ * 链接基础样式
+ */
 a {
-  text-decoration: none;
-  color: var(--primary);
+  text-decoration: none;                                      /* 去除下划线 */
+  color: var(--primary);                                      /* 链接颜色 */
 }
 
+/**
+ * 链接悬停样式
+ */
 a:hover {
-  color: var(--primary-light);
+  color: var(--primary-light);                                /* 悬停时颜色变亮 */
 }
 
+/**
+ * 页面容器样式
+ * 最小高度减去顶部和底部导航高度
+ */
 .page-container {
-  min-height: calc(100vh - 120px);
-  padding: 20px 0;
+  min-height: calc(100vh - 120px);                            /* 最小高度（减去120px） */
+  padding: 20px 0;                                            /* 上下内边距20px */
 }
 
+/**
+ * 主内容宽度样式
+ * 居中布局，最大宽度1200px
+ */
 .main-width {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 16px;
+  max-width: 1200px;                                          /* 最大宽度1200px */
+  margin: 0 auto;                                             /* 水平居中 */
+  padding: 0 16px;                                            /* 左右内边距16px */
 }
 
-/* Button active feedback */
+/**
+ * Element Plus按钮点击反馈效果
+ * 点击时轻微缩小
+ */
 .el-button:active {
-  transform: scale(0.96);
+  transform: scale(0.96);                                     /* 缩放至96% */
 }
 
-/* Price color */
+/**
+ * 价格文字样式
+ * 红色、加粗、18px字号
+ */
 .price-text {
-  color: #f56c6c;
-  font-weight: bold;
-  font-size: 18px;
+  color: #f56c6c;                                            /* 红色 */
+  font-weight: bold;                                          /* 加粗 */
+  font-size: 18px;                                            /* 字号18px */
 }
 
-/* Skeleton loading placeholder */
+/**
+ * 骨架屏加载占位符样式
+ * 渐变动画效果
+ */
 .skeleton-placeholder {
-  background: linear-gradient(90deg, #f0f0f0 25%, #e8e8e8 50%, #f0f0f0 75%);
-  background-size: 200% 100%;
-  animation: skeleton-loading 1.5s ease-in-out infinite;
-  border-radius: var(--radius);
+  background: linear-gradient(90deg, #f0f0f0 25%, #e8e8e8 50%, #f0f0f0 75%); /* 渐变背景 */
+  background-size: 200% 100%;                                 /* 背景尺寸 */
+  animation: skeleton-loading 1.5s ease-in-out infinite;       /* 动画效果 */
+  border-radius: var(--radius);                                /* 圆角 */
 }
 
+/**
+ * 骨架屏动画关键帧
+ * 从右向左移动的渐变效果
+ */
 @keyframes skeleton-loading {
-  0% { background-position: 200% 0; }
-  100% { background-position: -200% 0; }
+  0% { background-position: 200% 0; }                        /* 起始位置 */
+  100% { background-position: -200% 0; }                      /* 结束位置 */
 }
 
-/* Empty state */
+/**
+ * 空状态样式
+ * 居中显示，带图标和文字
+ */
 .empty-state {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 60px 20px;
-  color: var(--text-secondary);
-  font-size: 14px;
+  display: flex;                                              /* flex布局 */
+  flex-direction: column;                                     /* 垂直排列 */
+  align-items: center;                                        /* 垂直居中 */
+  justify-content: center;                                    /* 水平居中 */
+  padding: 60px 20px;                                         /* 内边距 */
+  color: var(--text-secondary);                               /* 文字颜色 */
+  font-size: 14px;                                            /* 字号14px */
 }
 
+/**
+ * 空状态图标样式
+ */
 .empty-state .el-icon {
-  font-size: 60px;
-  margin-bottom: 16px;
-  color: #dcdfe6;
+  font-size: 60px;                                            /* 图标大小60px */
+  margin-bottom: 16px;                                         /* 下外边距16px */
+  color: #dcdfe6;                                             /* 浅灰色图标 */
 }
 
-/* Card hover effect */
+/**
+ * 卡片悬停效果
+ * 阴影和上浮动画
+ */
 .hover-card {
-  transition: box-shadow 0.3s ease, transform 0.3s ease;
+  transition: box-shadow 0.3s ease, transform 0.3s ease;      /* 过渡动画 */
 }
 
+/**
+ * 卡片悬停时样式
+ * 添加阴影和上浮效果
+ */
 .hover-card:hover {
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
-  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);                /* 阴影效果 */
+  transform: translateY(-2px);                                 /* 向上移动2px */
 }
