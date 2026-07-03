@@ -186,20 +186,39 @@ cd backend
 javac -d build-vscode -cp "src;webapp/WEB-INF/lib/*" src/com/shop/**/*.java src/dao/*.java
 ```
 
-2. 将编译后的 `build-vscode` 目录复制到 Tomcat 的 `webapps/shopping-mall/WEB-INF/classes/`
-3. 启动 Tomcat 服务
+1. 将编译后的 `build-vscode` 目录复制到 Tomcat 的 `webapps/shopping-mall/WEB-INF/classes/`
+2. 启动 Tomcat 服务
 
 方式二：使用项目脚本
 
-```bash
-# 启动服务
-.\start
+**注意：使用前请先配置 Tomcat 路径**
 
-# 停止服务
-.\stop
+编辑项目根目录下的 `start.bat` 和 `stop.bat`，修改第8行的 Tomcat 安装路径：
+
+```bat
+set TOMCAT_HOME=D:\apache-tomcat-9.0.80
 ```
 
-后端服务启动后访问：<http://localhost:8080/shopping-mall/>
+**启动服务**：
+
+```bash
+# Windows 双击或命令行执行
+.\start.bat
+```
+
+**停止服务**：
+
+```bash
+# Windows 双击或命令行执行
+.\stop.bat
+```
+
+`start.bat` 会自动完成以下操作：
+1. 编译后端 Java 代码
+2. 部署到 Tomcat 的 `webapps/shopping-mall/` 目录
+3. 启动 Tomcat 服务器
+
+后端服务启动后访问：http://localhost:8080/shopping-mall/
 
 ## 🔌 API 接口
 
@@ -223,10 +242,10 @@ javac -d build-vscode -cp "src;webapp/WEB-INF/lib/*" src/com/shop/**/*.java src/
 
 ### 分类模块
 
-| 接口                      | 方法  | 说明     |
-| ----------------------- | --- | ------ |
-| `/api/category/list`    | GET | 获取分类列表 |
-| `/api/category/detail`  | GET | 获取分类详情 |
+| 接口                     | 方法  | 说明     |
+| ---------------------- | --- | ------ |
+| `/api/category/list`   | GET | 获取分类列表 |
+| `/api/category/detail` | GET | 获取分类详情 |
 
 ### 购物车模块
 
@@ -240,15 +259,15 @@ javac -d build-vscode -cp "src;webapp/WEB-INF/lib/*" src/com/shop/**/*.java src/
 
 ### 订单模块
 
-| 接口                      | 方法   | 说明      |
-| ----------------------- | ---- | ------- |
-| `/api/order/create`     | POST | 创建订单    |
-| `/api/order/list`       | GET  | 获取订单列表  |
-| `/api/order/detail`     | GET  | 获取订单详情  |
-| `/api/order/pay`        | POST | 支付订单    |
-| `/api/order/confirm`    | POST | 确认收货    |
-| `/api/order/admin/list` | GET  | 管理员订单列表 |
-| `/api/order/admin/update`| POST | 更新订单状态  |
+| 接口                        | 方法   | 说明      |
+| ------------------------- | ---- | ------- |
+| `/api/order/create`       | POST | 创建订单    |
+| `/api/order/list`         | GET  | 获取订单列表  |
+| `/api/order/detail`       | GET  | 获取订单详情  |
+| `/api/order/pay`          | POST | 支付订单    |
+| `/api/order/confirm`      | POST | 确认收货    |
+| `/api/order/admin/list`   | GET  | 管理员订单列表 |
+| `/api/order/admin/update` | POST | 更新订单状态  |
 
 ### 地址模块
 
@@ -261,9 +280,9 @@ javac -d build-vscode -cp "src;webapp/WEB-INF/lib/*" src/com/shop/**/*.java src/
 
 ### 管理模块
 
-| 接口                    | 方法  | 说明     |
-| --------------------- | --- | ------ |
-| `/api/admin/dashboard`| GET | 获取仪表盘数据 |
+| 接口                     | 方法  | 说明      |
+| ---------------------- | --- | ------- |
+| `/api/admin/dashboard` | GET | 获取仪表盘数据 |
 
 ## 🔐 测试账号
 
